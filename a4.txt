@@ -1,0 +1,93 @@
+Script started on 2022-10-24 23:33:41-04:00
+]0;eric@sjsu:/mnt/scratch/eric/a4[eric@sjsu a4]$ cd -
+/mnt/scratch/eric
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ grep retweeted downloaded_tweets_extend_nolf2.tsv | awk -F '\t' '{print $5}'| sed 's/^.* id=//g' | sed 's/ typee=retweeted.//g' >  retweets.txt
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ fgrep -f retweets.txt downloaded_tweets_extend_original_nolf2.tsv |
+> awk -F'\t' '{print $2}' > users_retweeted.txt
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ sort users_retweeted.txt | uniq -c | sort -rn | head -10
+    527 18831926
+    387 1891490382
+    276 163018653
+    274 1495480590572961792
+    254 1231514832479948802
+    250 1219232377605644289
+    189 42836999
+    179 1229752606714728454
+    178 380648579
+    159 1290232189615894531
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ grep retweeted downloaded_tweets_extend_nolf2.tsv | cut -f 2,5 |  awk '{print $1,$3}' > Q1.csv
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ cat Q1.csv | head -10
+308045021 id=1513654494504136709
+308045021 id=1513774168348704770
+308045021 id=1519864927997075458
+308045021 id=1519742972186800130
+308045021 id=1519666326419218432
+308045021 id=1519450979204276227
+308045021 id=1519075500588687361
+308045021 id=1518733566590394368
+308045021 id=1518538452240900096
+308045021 id=1517876638461038592
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ awk '{if ($1>=3) {print $1,$2}}' Q1.csv > Q2.csv
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ cat Q2.csv | head -10
+308045021 id=1513654494504136709
+308045021 id=1513774168348704770
+308045021 id=1519864927997075458
+308045021 id=1519742972186800130
+308045021 id=1519666326419218432
+308045021 id=1519450979204276227
+308045021 id=1519075500588687361
+308045021 id=1518733566590394368
+308045021 id=1518538452240900096
+308045021 id=1517876638461038592
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ sort Q2[K[K[K[K[K[K[Kcat[K[K[Kcat[K[K[Ksort Q2.csv | head [K[K[K[K[Kuniq -c } [K[K| rn[K[Ksort -rn | head -10[K0
+      6 1028022611324747776 id=1353544852076695559
+      5 1028022611324747776 id=1496610237020704772
+      3 195578878 id=1494394492081876999
+      3 195578878 id=1482842029579190273
+      3 195578878 id=1481381398493732866
+      3 195578878 id=1481363299077955593
+      3 1028022611324747776 id=1368981179383222272
+      2 950215424981028864 id=1496965766435926039
+      2 950215424981028864 id=1488679010582372353
+      2 950215424981028864 id=1486754872422772736
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ diff downloaded_tweets_extend_nolf2.tsv | [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kdiff downloaded_tweets_extend_nolf2.tsv Q1.csv | cut -f4 | sort | uniq -c | sort -rn| head -30
+  20647 
+   1266 Ukraine
+    945 COVID19
+    870 LongCovid
+    833 "FBPE,FollowBackFriday"
+    320 Russia
+    305 BREAKING
+    257 PMQs
+    208 auspol
+    181 StandWithUkraine
+    177 AmiesMovieRating
+    176 Omicron
+    168 Mariupol
+    136 Kyiv
+    135 BA2
+    122 "Russia,Ukraine"
+    120 COVID
+    118 Bales2022FilmChallenge
+    111 Putin
+    108 COVIDisAirborne
+    107 "PutinHitler,StandWithUkraine,PutinHitler,PutinWarCriminal,StopPutinNOW,RussiaSanctions,BoycottRussia"
+    107 ClimateCrisis
+    106 BoycottATP
+    105 Russian
+     98 "cathrynhartt,harttandsoul,actor,actorslife"
+     97 Covid19
+     93 Partygate
+     87 TikTok
+     85 longcovid
+     80 Ottawa
+]0;eric@sjsu:/mnt/scratch/eric[eric@sjsu eric]$ exit
+
+Script done on 2022-10-24 23:36:04-04:00
+
+
+
+
+a4.txt ANSWERS
+
+6. The replies chart showed connections that seemed scattered and all over the place since many users had multiple connections with each other. For the retweet however, all the clusters seem to be close. When hovering over one for connections, there was very few for each compared to the replies. 
